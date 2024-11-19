@@ -184,6 +184,16 @@ static void uvc_fixup_video_ctrl(struct uvc_streaming *stream,
 	if (frame == NULL)
 		return;
 
+	// Custom handling for Osmo & Pocket devices with H264 format
+	if (stream->dev->udev->descriptor.idVendor == 0x2ca3 &&
+		stream->dev->udev->descriptor.idProduct == 0x0023 &&
+		format->fcc == V4L2_PIX_FMT_H264 &&
+		ctrl->dwMaxVideoFrameSize == 0) {
+
+		// Set a default buffer size for H264 if not specified
+		ctrl->dwMaxVideoFrameSize = 4147200;  // Adjust size if needed
+	}
+
 	if (!(format->flags & UVC_FMT_FLAG_COMPRESSED) ||
 	     (ctrl->dwMaxVideoFrameSize == 0 &&
 	      stream->dev->uvc_version < 0x0110))
