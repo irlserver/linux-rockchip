@@ -2,7 +2,7 @@ linux-rockchip (6.1.0-1028.28) noble; urgency=medium
 
   * Custom handling for Osmo & Pocket devices with H264 format
 
- -- Thomas Lekanger <mail@irl.software>  Sat, 19 November 2024 15:47:00 -0400
+ -- Thomas Lekanger <mail@irl.software>  Sat, 19 Nov 2024 15:47:00 -0400
  
  linux-rockchip (6.1.0-1027.27) noble; urgency=medium
 
